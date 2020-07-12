@@ -5,15 +5,17 @@
       %ul.main-header__left-box__member-list 
         Member:
         %li.main-header__left-box__member-list__member 石塚
-    =link_to"#"do
+    =link_to "groups/edit"do
       %p.main-header__edit-btn Edit
 
   .messages
+    = render @messages
+
   .form
-    %form.new_message
-      .input-box
-        %input{type:"text",class:"input-box__text",placeholder:"type a message"}
-        %label{class:"input-box__image"}
-          = icon('fas','image')
-          %input{type: "file",class: "input-box__image__file"}
-      %input{type:"submit",class:"submit-btn"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__text', placeholder: 'type a message'
+      .form__image
+        = f.label :image, class: 'form__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'form__image__file'
+      = f.submit 'Send', class: 'submit__btn'
