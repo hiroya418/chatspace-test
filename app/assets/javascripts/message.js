@@ -76,6 +76,8 @@ $('#new_message').on('submit', function(e){
  e.preventDefault();
  var formData = new FormData(this);
  var url = $(this).attr('action')
+console.log("aaa")
+
  $.ajax({
    url: url,
    type: "POST",
@@ -89,7 +91,11 @@ $('#new_message').on('submit', function(e){
     $('.messages').append(html);
     $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
     $('form')[0].reset();
+    $('.submit__btn').prop("disabled",false);
   })
+  .fail(function() {
+    alert("メッセージ送信に失敗しました");
+  });
 })
 if (document.location.href.match(/\/groups\/\d+\/messages/)) {
   setInterval(reloadMessages, 7000);
