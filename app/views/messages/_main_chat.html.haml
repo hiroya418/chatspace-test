@@ -4,7 +4,8 @@
       .main-header__left-box__current-group test
       %ul.main-header__left-box__member-list 
         Member:
-        %li.main-header__left-box__member-list__member 石塚
+        %li.main-header__left-box__member-list__member
+          = current_user.name
     =link_to "groups/edit"do
       %p.main-header__edit-btn Edit
 
