@@ -5,8 +5,10 @@
       %ul.main-header__left-box__member-list 
         Member:
         %li.main-header__left-box__member-list__member
-          = current_user.name
-    =link_to "groups/edit"do
+          - current_user.groups.each do |login_user|
+            =login_user.name 
+
+    = link_to edit_group_path(@group) do
       %p.main-header__edit-btn Edit
 
   .messages
