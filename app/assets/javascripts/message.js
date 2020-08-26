@@ -70,10 +70,8 @@ $(function(){
         alert('error');
       });
     };
-    if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-      setInterval(reloadMessages, 7000);
-    }
-  });
+
+
 $('#new_message').on('submit', function(e){
  e.preventDefault();
  var formData = new FormData(this);
@@ -89,6 +87,11 @@ $('#new_message').on('submit', function(e){
   .done(function(data){
     var html = buildHTML(data);
     $('.messages').append(html);
+    $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
     $('form')[0].reset();
   })
 })
+if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+  setInterval(reloadMessages, 7000);
+}
+});
