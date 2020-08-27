@@ -5,7 +5,7 @@
       %ul.main-header__left-box__member-list 
         Member:
         %li.main-header__left-box__member-list__member
-          - current_user.groups.each do |login_user|
+          - @group.users.each do |login_user|
             =login_user.name 
 
     = link_to edit_group_path(@group) do
